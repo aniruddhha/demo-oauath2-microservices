@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         var worker = User.builder()
                 .username("worker")
                 .password(encoder.encode("123"))
-                .authorities(AppRole.WORKER.name())
+                .authorities(AppRole.MACHINE_WORKER.grantedAuthorities())
                 .build();
 
         return new InMemoryUserDetailsManager(

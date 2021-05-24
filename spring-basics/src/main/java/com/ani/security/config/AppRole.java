@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 
 public enum AppRole {
     MACHINE(Set.of(AppPermission.MACHINE_START, AppPermission.MACHINE_STOP)),
-    WORKER(Set.of(AppPermission.WORKER_ACCESS));
+    WORKER(Set.of(AppPermission.WORKER_ACCESS)),
+    MACHINE_WORKER(Set.of(AppPermission.MACHINE_START, AppPermission.WORKER_ACCESS));
 
     private final Set<AppPermission> permissions;
 

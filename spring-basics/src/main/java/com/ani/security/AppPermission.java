@@ -6,6 +6,7 @@ public enum AppPermission {
     MACHINE_STOP("machine:stop"),
 
     WORKER_ACCESS("worker:access");
+//    MACHINE_WORKER("worker:login");
 
     private final String permission;
 
