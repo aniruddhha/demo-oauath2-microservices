@@ -1,6 +1,5 @@
 package com.ani.security.config;
 
-import com.ani.security.AppPermission;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;

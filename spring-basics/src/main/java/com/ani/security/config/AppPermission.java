@@ -1,4 +1,4 @@
-package com.ani.security;
+package com.ani.security.config;
 
 public enum AppPermission {
 

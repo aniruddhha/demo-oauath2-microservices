@@ -22,7 +22,7 @@ public class MachineController {
     }
 
     @PreAuthorize("hasAuthority('machine:start')")
-    @GetMapping("/pause")
+    @PutMapping("/pause")
     public ResponseDTO pause() {
         return new ResponseDTO("machine paused", "success");
     }
