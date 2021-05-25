@@ -3,6 +3,8 @@ package com.ani.security.config;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,7 +20,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final PasswordEncoder encoder;
+//    private final PasswordEncoder encoder;
+    private final DaoAuthenticationProvider provider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -32,11 +35,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic();
     }
 
-    @Bean
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        super.configure(auth);
+        auth.authenticationProvider(provider);
+    }
+
+    /*@Bean
     @Override
     protected UserDetailsService userDetailsService() {
 
-        var machine = User.builder()
+        /*var machine = User.builder()
                 .username("machine")
                 .password(encoder.encode("123"))
 //                .roles(AppRole.MACHINE.name())
@@ -52,5 +61,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new InMemoryUserDetailsManager(
                 machine, worker
         );
-    }
+    }*/
 }

@@ -20,6 +20,8 @@ public class AppUserDetails implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toSet());
         authorities.add(new SimpleGrantedAuthority("ROLE_"+user.getRole().toUpperCase()));
+
+        authorities.forEach(System.out::println);
         return authorities;
     }
 
